@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 80vh;
+}
+
+.container__button {
+    width: 200px;
+    height: 75px;
+    background-color: #232323;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    box-shadow: 5px 5px #151515;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 10px;
+    line-height: 75px;
+    cursor: pointer;
+}
+
+.container__button:hover {
+    background-color: #393838;
+    box-shadow: 2px 2px #151515;
+    color: #b3b1b1;
+}
+
+.container__header {
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+}
