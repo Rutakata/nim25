@@ -1,18 +1,18 @@
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
 import Modes from './components/Modes/Modes';
-import GameField from './components/GameField/GameField';
+import GameFieldContainer from './components/GameField/GameFieldContainer';
+import './App.css';
 
-function App() {
 
-  return (
-    <div className='container'>
-      <Routes>
-        <Route path='/' index element={<Modes />} />
-        <Route path='/game' element={<GameField />}/>
-      </Routes>
-    </div>
-  )
+const App = () => {
+	return (
+		<div className='container'>
+			<Routes>
+				<Route path='/' index element={<Modes />} />
+				<Route path='/game' element={<GameFieldContainer />} />
+			</Routes>
+		</div>
+  	)
 }
 
 export default App
