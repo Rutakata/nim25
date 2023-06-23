@@ -64,9 +64,11 @@ const GameFieldContainer = () => {
     }, [totalMatchesCount])
 
     return (
-        <GameField takeMatches={takeMatches}
-                   isWinnerShown={isWinnerShow} 
+        <GameField isWinnerShown={isWinnerShow} 
                    totalMatchesCount={totalMatchesCount}
+                   botMatchesCount={botMatchesCount}
+                   playerMatchesCount={playerMatchesCount}
+                   takeMatches={takeMatches}
                    isOdd={isOdd} 
                    isButtonDisabled={isButtonDisabled}
                    restartGame={restartGame}

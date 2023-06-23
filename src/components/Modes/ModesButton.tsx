@@ -9,7 +9,7 @@ type Props = {
 
 const ModesButton = ({path, text}: Props) => {
     return (
-        <Link to={path} className={styles.container__link}><div className={styles.container__button}>{text}</div></Link>
+        <Link to={path} className={styles.container__link}><div className={styles.container__buttonsWrapper__button}>{text}</div></Link>
     )
 }
 

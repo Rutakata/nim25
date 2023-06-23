@@ -3,9 +3,54 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100vw;
     height: 100vh;
+}
+
+.container__botInfo, .container__playerInfo {
+    background-color: #d22121;
+    border-radius: 0 0 10px 10px;
+    width: 500px;
+    height: 80px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.container__playerInfo {
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(35, 35, 210);
+}
+
+.container__botInfo__score, .container__playerInfo__score {
+    font-size: 45px;
+}
+
+.container__gameInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.container__gameInfo__leftMatches {
+    font-size: 50px;
+    margin: 0;
+    display: block;
+    width: min-content;
+    height: min-content;
+    padding: 5px 10px;
+    background-color: #393838;
+    border-radius: 5px;
+}
+
+.container__gameInfo__currentMove {
+    font-size: 30px;
+    margin: 0;
 }
 
 .container__buttonsContainer {
@@ -19,6 +64,7 @@
     color: #fff;
     width: 50px;
     height: 30px;
+    font-size: 20px;
     background-color: #232323;
     border-radius: 5px;
     box-shadow: 4px 4px #151515;
