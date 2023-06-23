@@ -32,7 +32,7 @@ const GameFieldContainer = () => {
         }else {
             setBotMatchesCount(botMatchesCount+(4-lastTake));
             setTotalMatchesCount(totalMatchesCount-(4-lastTake));
-            setLastTake(count);
+            setLastTake((4-lastTake));
             setTurn(turn+1);
         }
     }
@@ -68,6 +68,7 @@ const GameFieldContainer = () => {
                    totalMatchesCount={totalMatchesCount}
                    botMatchesCount={botMatchesCount}
                    playerMatchesCount={playerMatchesCount}
+                   lastTake={lastTake}
                    takeMatches={takeMatches}
                    isOdd={isOdd} 
                    isButtonDisabled={isButtonDisabled}

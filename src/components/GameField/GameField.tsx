@@ -1,5 +1,6 @@
 import styles from './GameField.module.css';
 import MatchesPickButton from "./MatchesPickButton";
+import TakenMatchesIndicator from './TakenMatchesIndicator/TakenMatchesIndicator';
 import WinnerPopup from "./WinnerPopup/WinnerPopup";
 
 
@@ -8,6 +9,7 @@ type Props = {
     playerMatchesCount: number,
     totalMatchesCount: number,
     isWinnerShown: boolean,
+    lastTake: number,
     takeMatches: (count: number) => void,
     isOdd: () => boolean,
     isButtonDisabled: (numberOfMatches: number) => boolean,
@@ -18,7 +20,8 @@ type Props = {
 const GameField = ({totalMatchesCount, 
                     isWinnerShown,
                     playerMatchesCount,
-                    botMatchesCount, 
+                    botMatchesCount,
+                    lastTake, 
                     takeMatches, 
                     isOdd, 
                     isButtonDisabled, 
@@ -52,6 +55,7 @@ const GameField = ({totalMatchesCount,
                 <span className={styles.container__playerInfo__score}>{playerMatchesCount}</span>
             </div>
             {/* <div><Link to='/'>Go home</Link></div> */}
+            <TakenMatchesIndicator lastTake={lastTake} isOdd={isOdd} />
             <WinnerPopup isWinnerShown={isWinnerShown}
                          winner={playerMatchesCount > botMatchesCount ? 'player' : 'bot'}
                          restartGame={restartGame}

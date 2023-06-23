@@ -1,0 +1,76 @@
+.indicator_up, .indicator_down {
+    color: rgb(24, 174, 24);
+    display: block;
+    font-size: 40px;
+    font-weight: 600;
+    opacity: 0%;
+    position: absolute;
+    right: 30%;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-duration: 1s;
+    animation-name: goup;
+}
+
+.indicator_down {
+    animation-name: godown;
+}
+
+@keyframes goup {
+    0% {
+        right: 30%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 10%;
+    }
+    25% {
+        opacity: 50%;
+        top: 47%;
+    }
+    50% {
+        opacity: 100%;
+        top: 42%;
+    }
+    75% {
+        opacity: 80%;
+        top: 39%;
+    }
+    90% {
+        opacity: 0%;
+        top: 37%;
+    }
+    100% {
+        display: none;
+        top: 50%;
+    }
+}
+
+@keyframes godown {
+    0% {
+        display: block;
+        right: 30%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 10%;
+    }
+    25% {
+        opacity: 50%;
+        top: 53%;
+    }
+    50% {
+        opacity: 100%;
+        top: 58%;
+    }
+    75% {
+        opacity: 80%;
+        top: 61%;
+    }
+    90% {
+        opacity: 0%;
+        top: 63%;
+    }
+    100% {
+        display: none;
+        top: 50%;
+    }
+}
