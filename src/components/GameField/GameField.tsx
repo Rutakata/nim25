@@ -11,7 +11,7 @@ type Props = {
     isWinnerShown: boolean,
     lastTake: number,
     takeMatches: (count: number) => void,
-    isOdd: () => boolean,
+    isTurnOdd: () => boolean,
     isButtonDisabled: (numberOfMatches: number) => boolean,
     restartGame: () => void,
     navigateToMainScreen: () => void
@@ -23,7 +23,7 @@ const GameField = ({totalMatchesCount,
                     botMatchesCount,
                     lastTake, 
                     takeMatches, 
-                    isOdd, 
+                    isTurnOdd, 
                     isButtonDisabled, 
                     restartGame, 
                     navigateToMainScreen}: Props) => {
@@ -39,7 +39,7 @@ const GameField = ({totalMatchesCount,
                 </h1>
 
                 <h2 className={styles.container__gameInfo__currentMove}>
-                    {isOdd() ? "It's your turn" : "It's bot's turn"}
+                    {isTurnOdd() ? "It's your turn" : "It's bot's turn"}
                 </h2>
 
                 <div className={styles.container__buttonsContainer}>
@@ -55,9 +55,9 @@ const GameField = ({totalMatchesCount,
                 <span className={styles.container__playerInfo__score}>{playerMatchesCount}</span>
             </div>
             {/* <div><Link to='/'>Go home</Link></div> */}
-            <TakenMatchesIndicator lastTake={lastTake} isOdd={isOdd} />
+            <TakenMatchesIndicator lastTake={lastTake} isTurnOdd={isTurnOdd} />
             <WinnerPopup isWinnerShown={isWinnerShown}
-                         winner={playerMatchesCount > botMatchesCount ? 'player' : 'bot'}
+                         winner={botMatchesCount % 2 === 1 ? 'player' : 'bot'}
                          restartGame={restartGame}
                          navigateToMainScreen={navigateToMainScreen} />
         </div>

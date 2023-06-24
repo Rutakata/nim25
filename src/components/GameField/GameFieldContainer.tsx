@@ -11,28 +11,49 @@ const GameFieldContainer = () => {
     const [isWinnerShow, setIsWinnerShown] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    const isOdd = () => {
+    const isTurnOdd = () => {
         return turn % 2 ? true : false;
     }
 
     const isButtonDisabled = (numberOfMatches: number) => {
-        if (!isOdd() || numberOfMatches > totalMatchesCount) {
+        if (!isTurnOdd() || numberOfMatches > totalMatchesCount) {
             return true;
         }else {
             return false;
         }
     }
 
-    const takeMatches = (count: number) => {
-        if (isOdd()) {
+    const takeMatches = (count?: number) => {
+        if (isTurnOdd() && count) {
             setPlayerMatchesCount(playerMatchesCount+count);
             setTotalMatchesCount(totalMatchesCount-count);
             setLastTake(count);
             setTurn(turn+1);
         }else {
-            setBotMatchesCount(botMatchesCount+(4-lastTake));
-            setTotalMatchesCount(totalMatchesCount-(4-lastTake));
-            setLastTake((4-lastTake));
+            let matchesToTake: number = 0;
+            let module: number = totalMatchesCount % 4;
+
+            if (totalMatchesCount % 2 === 0) {
+                matchesToTake = 2;
+            } else {
+                switch(module) {
+                    case 0:
+                        matchesToTake = 3;
+                        break;
+                    case 1:
+                    case 2:
+                        matchesToTake = 1;
+                        break;
+                    case 3:
+                        matchesToTake = 2;
+                        break;
+                    default:
+                }
+            }
+
+            setBotMatchesCount(botMatchesCount+matchesToTake);
+            setTotalMatchesCount(totalMatchesCount-matchesToTake);
+            setLastTake(matchesToTake);
             setTurn(turn+1);
         }
     }
@@ -52,8 +73,8 @@ const GameFieldContainer = () => {
     }
 
     useEffect(() => {
-        if (!isOdd() && totalMatchesCount > 0) {
-            setTimeout(() => takeMatches(1), 1000);
+        if (!isTurnOdd() && totalMatchesCount > 0) {
+            setTimeout(() => takeMatches(), 1000);
         }
     }, [turn])
 
@@ -70,7 +91,7 @@ const GameFieldContainer = () => {
                    playerMatchesCount={playerMatchesCount}
                    lastTake={lastTake}
                    takeMatches={takeMatches}
-                   isOdd={isOdd} 
+                   isTurnOdd={isTurnOdd} 
                    isButtonDisabled={isButtonDisabled}
                    restartGame={restartGame}
                    navigateToMainScreen={navigateToMainScreen} />

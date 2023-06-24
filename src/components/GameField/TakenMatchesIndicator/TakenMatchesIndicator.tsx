@@ -3,12 +3,12 @@ import styles from './TakenMatchesIndicator.module.css';
 
 type Props = {
     lastTake: number,
-    isOdd: () => boolean
+    isTurnOdd: () => boolean
 }
 
-const TakenMatchesIndicator = ({lastTake, isOdd}: Props) => {
+const TakenMatchesIndicator = ({lastTake, isTurnOdd}: Props) => {
     return (
-        <div className={isOdd() ? styles.indicator_up : styles.indicator_down}>
+        <div className={isTurnOdd() ? styles.indicator_up : styles.indicator_down}>
             +{lastTake}
         </div>
     )
