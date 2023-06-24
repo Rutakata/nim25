@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import GameField from "./GameField";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 const GameFieldContainer = () => {
+    let { state } = useLocation();
     const [totalMatchesCount, setTotalMatchesCount] = useState<number>(25);
     const [playerMatchesCount, setPlayerMatchesCount] = useState<number>(0);
     const [botMatchesCount, setBotMatchesCount] = useState<number>(0);
@@ -34,7 +36,7 @@ const GameFieldContainer = () => {
             let module: number = totalMatchesCount % 4;
 
             if (totalMatchesCount % 2 === 0) {
-                matchesToTake = 2;
+                matchesToTake = 1;
             } else {
                 switch(module) {
                     case 0:
@@ -71,6 +73,10 @@ const GameFieldContainer = () => {
         setIsWinnerShown(false);
         navigate('/');
     }
+
+    useEffect(() => {
+        setTurn(state.firstTurn);
+    }, [state])
 
     useEffect(() => {
         if (!isTurnOdd() && totalMatchesCount > 0) {

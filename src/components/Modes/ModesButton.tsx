@@ -5,11 +5,16 @@ import styles from './Modes.module.css';
 type Props = {
     path: string,
     text: string,
+    firstTurn: number
 }
 
-const ModesButton = ({path, text}: Props) => {
+const ModesButton = ({path, text, firstTurn}: Props) => {
     return (
-        <Link to={path} className={styles.container__link}><div className={styles.container__buttonsWrapper__button}>{text}</div></Link>
+        <Link to={path} className={styles.container__link} state={{firstTurn}}>
+            <div className={styles.container__buttonsWrapper__button}>
+                {text}
+            </div>
+        </Link>
     )
 }
 
